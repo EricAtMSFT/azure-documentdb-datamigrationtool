@@ -34,6 +34,9 @@ namespace Microsoft.DataTransfer.DocumentDb.Client
 
             var connectionPolicy =  DocumentDbClientHelper.ApplyConnectionMode(new ConnectionPolicy(), connectionMode);
 
+            // suposedly forces a TLS update in a given app domain.
+            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+
             using (var client = new DocumentClient(new Uri(parsed.AccountEndpoint), parsed.AccountKey, connectionPolicy))
             {
                 await client.OpenAsync();

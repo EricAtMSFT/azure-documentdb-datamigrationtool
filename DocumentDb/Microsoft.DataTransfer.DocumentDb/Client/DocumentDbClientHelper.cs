@@ -14,9 +14,10 @@ namespace Microsoft.DataTransfer.DocumentDb.Client
                 connectionMode = Defaults.Current.ConnectionMode;
 
             connectionPolicy.ConnectionMode = connectionMode == DocumentDbConnectionMode.Gateway
-                ? ConnectionMode.Gateway : ConnectionMode.Direct;
+                ? ConnectionMode.Direct : ConnectionMode.Direct;
+            
             connectionPolicy.ConnectionProtocol = connectionMode == DocumentDbConnectionMode.DirectTcp
-                ? Protocol.Tcp : Protocol.Https;
+                ? Protocol.Tcp : Protocol.Tcp;
 
             return connectionPolicy;
         }
